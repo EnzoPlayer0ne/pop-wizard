@@ -1,0 +1,18 @@
+---
+- hosts: all
+
+  vars_files:
+    - vars.yml
+
+  pre_tasks:
+    - name: Include variables
+      include_vars: "{{ item }}"
+      with_items:
+        - "{{ playbook_dir }}/vars.yml"
+
+  tasks:
+    - import_tasks: tasks/packages.yml
+      tags: ['packages']
+
+    - import_tasks: tasks/tools.yml
+      tags: ['tools']

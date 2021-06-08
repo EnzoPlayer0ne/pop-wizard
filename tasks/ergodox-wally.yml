@@ -1,12 +1,12 @@
 ---
 
-- name: Install dependencies
+- name: ergodox-wally | Install dependencies
   package:
     name: libusb-dev
     state: present
   become: true
 
-- name: Set Udev rule
+- name: ergodox-wally | Set Udev rule
   copy:
     src:
     dest: /etc/udev/rules.d/50-wally.rules
@@ -23,19 +23,19 @@
           SYMLINK+="stm32_dfu"
   become: true
 
-- name: Create plugdev group
+- name: ergodox-wally | Create plugdev group
   group:
     name: plugdev
     state: present
 
-- name: Add user to plugdev
+- name: ergodox-wally | Add user to plugdev
   user:
     name: "{{ ansible_user_id }}"
     groups: plugdev
     append: yes
   become: true
 
-- name: Install wally
+- name: ergodox-wally | Install wally
   get_url:
     url: https://configure.ergodox-ez.com/wally/linux
     dest: /usr/local/bin/wally

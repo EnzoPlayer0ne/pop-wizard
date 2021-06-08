@@ -1,12 +1,12 @@
 ---
 
-- name: Clone repo
+- name: neovim | Clone repo
   git:
     repo: 'https://github.com/neovim/neovim.git'
     dest: '/home/nequo/git/neovim'
   register: nvimrepo
 
-- name: Make
+- name: neovim | Make
   make:
     chdir: '/home/nequo/git/neovim'
     params:
@@ -14,7 +14,7 @@
   when: nvimrepo.changed
   become: true
 
-- name: Make Install
+- name: neovim | Make Install
   make:
     chdir: '/home/nequo/git/neovim'
     target: install

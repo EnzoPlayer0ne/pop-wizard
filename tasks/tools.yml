@@ -1,7 +1,7 @@
 ---
 
 # curl https://api.github.com/repos/sharkdp/bat/releases/latest | jq .assets[12].browser_download_url
-- name: install bat
+- name: tools | Install bat
   apt:
     deb: https://github.com/sharkdp/bat/releases/download/v0.18.1/bat_0.18.1_amd64.deb
   become: true
